@@ -13,6 +13,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
         post users_path, params: {user: user_params}
     end
     assert_template 'users/new'
+    assert_select 'div#error_explanation'
+    assert_select 'div.alert'
   end
 
   test "valid signup information" do
@@ -21,13 +23,16 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       user_params = {
           name:"TestName",
           email: "TestMail@test.ts",
-          password: "testpass",
-          password_confirmation: "testpass"
+          password: "testcases",
+          password_confirmation: "testcases"
       }
       post users_path, params: {user:user_params}
       follow_redirect!
     end
+    assert_response(:success)
     assert_template 'users/show'
+    assert_empty 'div#error_explanation'
+    assert_empty 'div.alert'
   end
 
 end
