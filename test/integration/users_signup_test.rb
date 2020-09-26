@@ -31,8 +31,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_response(:success)
     assert_template 'users/show'
-    assert_empty 'div#error_explanation'
-    assert_empty 'div.alert'
+    assert_not flash.empty?
   end
 
 end
