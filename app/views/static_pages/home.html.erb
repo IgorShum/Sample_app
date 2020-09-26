@@ -1,8 +1,17 @@
 <div class="center jumbotron">
-  <h1>Добро пожаловать на страницу тестового проекта Ruby on Rails</h1>
+  <h1>Добро пожаловать на главную страницу проекта Ruby on Rails</h1>
   <h2>
-    Проект создан в качестве примера по книге Майкла Хартла
+    Проект по книге Майкла Хартла
     <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
   </h2>
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<div class="card" style="width: 15rem;">
+  <%=content_tag(:img, image_tag('rails.png', alt: 'Rails logo'), class: "card-img-top") %>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
 </div>
