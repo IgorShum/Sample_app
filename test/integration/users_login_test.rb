@@ -16,7 +16,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
-  test "login with valid information" do
+  test "login with valid information followed by logout" do
     get login_path
     assert_select ".button_to[action=?]", login_path, count: 1
     assert_select ".button_to[action=?]", signup_path, count: 1
@@ -24,8 +24,17 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
-    assert_select "a[href=?]", login_path, count:0
+    assert_select ".button_to[action=?]", login_path, count:0
     assert_select ".button_to[action=?]", logout_path
     assert_select ".button_to[action=?]", user_path(@user)
+    delete logout_path
+    assert_not is_logged_in?
+    assert_redirected_to root_path
+    delete logout_path
+    follow_redirect!
+    assert_select ".button_to[action=?]", login_path
+    assert_select ".button_to[action=?]", logout_path, count: 0
+    assert_select ".button_to[action=?]", user_path(@user), count: 0
   end
+
 end
