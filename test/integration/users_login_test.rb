@@ -1,5 +1,6 @@
 require 'test_helper'
 
+
 class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
@@ -20,7 +21,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get login_path
     assert_select '.button_to[action=?]', login_path, count: 1
     assert_select '.button_to[action=?]', signup_path, count: 1
-    post login_path, params: { session: { email: @user.email, password: 'password' } }
+    post login_path, params: { session: { email: @user.email, password: 'password', remember:'0' } }
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
@@ -35,5 +36,10 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select '.button_to[action=?]', login_path
     assert_select '.button_to[action=?]', logout_path, count: 0
     assert_select '.button_to[action=?]', user_path(@user), count: 0
+  end
+
+  test "login with remembering" do
+    log_in_as(@user, remember_me:'1')
+    @user.reload
   end
 end
