@@ -24,7 +24,7 @@
         <div class="btn-group loginPanel" role="group" aria-label="Buttons">
           <% if logged_in? %>
             <%= button_to "Profile", current_user, method: "get", class:"btn btn-success" %>
-            <%= button_to "Settings", root_path, class:"btn btn-secondary" %>
+            <%= button_to "Settings", edit_user_path, method: "get", class:"btn btn-secondary" %>
             <%= button_to "Logout", logout_path, class:"btn btn-danger", method: :delete %>
             <%else %>
             <%= button_to "Log in", login_path, method: "get", class:"btn btn-success" %>
