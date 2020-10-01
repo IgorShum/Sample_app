@@ -14,6 +14,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                      password: 'foo',
                                      password_confirmation: 'bar'}}
     assert_template 'users/edit'
+    assert_not flash.empty?
+    assert_equal flash[:danger], 'Profile not updated!'
   end
 
   test "successful" do
@@ -26,6 +28,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                              password: '',
                                              password_confirmation: ''}}
     assert_not flash.empty?
+    assert_equal flash[:success], 'Profile updated!'
     assert_redirected_to @user
     @user.reload
     assert_equal @user.name, name

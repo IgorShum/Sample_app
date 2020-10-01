@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated!"
       redirect_to @user
     else
+      flash[:danger] = "Profile not updated!"
       render 'users/edit'
     end
   end
