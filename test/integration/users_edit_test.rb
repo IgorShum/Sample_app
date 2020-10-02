@@ -8,7 +8,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   test "unsuccessful" do
     get edit_user_path @user
-
     post login_path, params: { session: { email: @user.email, password: 'password', remember:'0' } }
     assert_redirected_to @user
     follow_redirect!

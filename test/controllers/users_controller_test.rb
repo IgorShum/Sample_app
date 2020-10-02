@@ -4,6 +4,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:michael)
+    @other = users(:archer)
   end
 
   test "should get new" do
@@ -21,5 +22,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     patch user_path(@user), params: {user: { name:@user.name,
                                              email: @user.email}}
     assert_not flash.empty?
+  end
+
+  test "should redirect edit when logged as wrong user" do
+    post login_path, params: { session: { email: @other.email, password: "password", remember:'0' } }
+    assert_response :success
+    get edit_user_path @user
+    follow_redirect!
+    puts flash.inspect
+    assert flash.empty?
+    assert_redirected_to root_url
+  end
+
+  test "should redirect update when logged in as wrong user" do
+
   end
 end
