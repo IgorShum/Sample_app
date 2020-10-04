@@ -25,13 +25,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect edit when logged as wrong user" do
+    get edit_user_path(@user)
+    assert_redirected_to login_path
     post login_path, params: { session: { email: @other.email, password: "password", remember:'0' } }
     assert_response :success
-    get edit_user_path @user
+    get edit_user_path(@user)
     follow_redirect!
     puts flash.inspect
-    assert flash.empty?
-    assert_redirected_to root_url
+    assert_response :success
+    #assert_redirected_to login_path
   end
 
   test "should redirect update when logged in as wrong user" do

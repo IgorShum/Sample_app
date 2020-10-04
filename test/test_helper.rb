@@ -21,7 +21,7 @@ class ActiveSupport::TestCase
     password = options[:password] || 'password'
     remember_me = options[:remember_me] || '1'
     user_params = { email: email, password: password, remember_me: remember_me}
-    post login_path, params: { session: user_params }
+    post login_path params: { session: user_params }
   end
 
   # Add more helper methods to be used by all tests here...
