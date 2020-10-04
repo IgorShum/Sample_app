@@ -26,6 +26,7 @@ gem 'rails-controller-testing'
 # gem 'image_processing', '~> 1.2'
 gem 'bcrypt'
 
+gem 'faker'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'autoprefixer-rails'
 gem 'bootsnap', '>= 1.4.2', require: false

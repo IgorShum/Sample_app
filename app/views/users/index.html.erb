@@ -6,6 +6,9 @@
     <li>
   <%= gravatar_for_user u, size:50 %>
       <%= link_to u.name, u %>
+      <% hidemail = u.email.chars %>
+      <% hidemail[2,3] = '*' %>
+      <%= content_tag(:div, hidemail.join(), class:"email") %>
     </li>
   <% end %>
 </ul>
