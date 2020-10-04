@@ -116,6 +116,7 @@ aside{
     .user_email{
       margin-bottom: -5px;
       padding-bottom: 0;
+      color: #dc3545;
     }
   }
 
@@ -204,10 +205,8 @@ input{
   margin: 0;
   li{
     overflow: auto;
-    padding: 10px 0;
-    border-bottom:  1px solid $gray-100;
-  }
-  .email{
-    color: #dc3545;
+    padding: 5px 0;
+    padding-top: 10px;
+    border-bottom:  3px solid #5a6268;
   }
 }
