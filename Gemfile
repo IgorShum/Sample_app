@@ -26,6 +26,9 @@ gem 'rails-controller-testing'
 # gem 'image_processing', '~> 1.2'
 gem 'bcrypt'
 
+gem 'will_paginate'
+gem 'will_paginate-bootstrap4'
+
 gem 'faker'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'autoprefixer-rails'

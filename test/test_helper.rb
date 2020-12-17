@@ -17,9 +17,9 @@ class ActiveSupport::TestCase
   end
 
   def log_in_as(user, options={})
-    email = options [:email] || 'example@ex.com'
-    password = options[:password] || 'password'
-    remember_me = options[:remember_me] || '1'
+    email = user[:email] || 'example@ex.com'
+    password = user[:password] || 'password'
+    remember_me = user[:remember_me] || '1'
     user_params = { email: email, password: password, remember_me: remember_me}
     post login_path params: { session: user_params }
   end
