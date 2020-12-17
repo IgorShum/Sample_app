@@ -1,13 +1,11 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-md-5">
     <section class="user_info">
-      <h1>
-        <%= gravatar_for_user @user%>
-        <%= "ID: #{@user.id}"%>
-        <p>
-        <%= @user.email %>
-      </h1>
+        <%= content_tag :div, (gravatar_for_user @user), class:"gravatar" %>
+        <%= content_tag :p, "ID: #{@user.id}", class:"user_id" %>
+        <%= content_tag :p, "Name: #{@user.name}", class:"user_name" %>
+        <%= content_tag :p, "Email: #{@user.email}", class:"user_email" %>
     </section>
   </aside>
 </div>
