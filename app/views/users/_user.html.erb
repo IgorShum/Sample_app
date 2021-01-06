@@ -4,6 +4,9 @@
       <%= gravatar_for_user user, size:50 %>
       <%= link_to user.name, user %>
       <%= content_tag(:div, user.email, class:"user_email") %>
+      <% if current_user.admin? && !current_user?(user) %> |
+      <%= link_to "delete", user, method: :delete, data: {confirm: "You sure?"} %>
+        <% end %>
     </section>
   </aside>
 </li>
