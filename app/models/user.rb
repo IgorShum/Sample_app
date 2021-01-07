@@ -2,7 +2,7 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   before_save { email.downcase!}
 
-  has_many :microposts
+  has_many :microposts, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 3, maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i.freeze
