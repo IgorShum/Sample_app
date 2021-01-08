@@ -46,6 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'spring'
   gem 'sqlite3', '~> 1.4'
+  gem 'simple_form'
 end
 
 group :development do
