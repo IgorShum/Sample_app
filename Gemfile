@@ -30,6 +30,9 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 
 gem 'faker'
+
+gem 'trix'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'autoprefixer-rails'
 gem 'bootsnap', '>= 1.4.2', require: false

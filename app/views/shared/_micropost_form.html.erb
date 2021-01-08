@@ -1,8 +1,6 @@
 <%= simple_form_for(@micropost) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
-<div class="field">
-  <%= f.input :content, label: 'Content' %>
-</div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.rich_text_area :content, class: "editor" %>
+  <br>
+  <%= f.submit "Post", class: "btn btn-success" %>
 <% end %>
-
