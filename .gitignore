@@ -40,3 +40,4 @@ spring/
 /.idea/*
 /.idea/sample_app.iml
 .gitignore
+/public/uploads
